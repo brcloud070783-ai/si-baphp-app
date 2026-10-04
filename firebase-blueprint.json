@@ -1,0 +1,129 @@
+{
+  "entities": {
+    "ProjectContract": {
+      "title": "ProjectContract",
+      "description": "Educational construction and procurement project contract with full Berita Acara records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "kodePaket": { "type": "string" },
+        "namaPaket": { "type": "string" },
+        "jenisPekerjaan": { "type": "string" },
+        "lokasi": { "type": "string" },
+        "kabupatenKota": { "type": "string" },
+        "program": { "type": "string" },
+        "kegiatan": { "type": "string" },
+        "subKegiatan": { "type": "string" },
+        "nomorDPA": { "type": "string" },
+        "sumberDana": { "type": "string" },
+        "tahunAnggaran": { "type": "number" },
+        "nomorSPK": { "type": "string" },
+        "tanggalSPK": { "type": "string" },
+        "nilaiSPK": { "type": "number" },
+        "jangkaWaktuHari": { "type": "number" },
+        "tipeHari": { "type": "string" },
+        "tanggalMulai": { "type": "string" },
+        "tanggalSelesai": { "type": "string" },
+        "nomorBAPHP": { "type": "string" },
+        "tanggalBAPHP": { "type": "string" },
+        "nomorBAST": { "type": "string" },
+        "tanggalBAST": { "type": "string" },
+        "nomorBAP": { "type": "string" },
+        "tanggalBAP": { "type": "string" },
+        "statusVerifikasi": { "type": "string" },
+        "catatanPemeriksaan": { "type": "string" },
+        "activeDocuments": { "type": "array" }
+      },
+      "required": ["id", "namaPaket", "nomorSPK", "nilaiSPK", "statusVerifikasi"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Chronological audit trail entry tracking document status changes, verifications, and version edits",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "actionType": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorEmail": { "type": "string" },
+        "authorRole": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "previousStatus": { "type": "string" },
+        "newStatus": { "type": "string" },
+        "version": { "type": "number" },
+        "changes": { "type": "array" }
+      },
+      "required": ["id", "projectId", "actionType", "title", "timestamp", "authorName"]
+    },
+    "OfficialOfficer": {
+      "title": "OfficialOfficer",
+      "description": "Government official (PPK, PPTK, PA/KPA, Bendahara)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nama": { "type": "string" },
+        "nip": { "type": "string" },
+        "jabatan": { "type": "string" },
+        "role": { "type": "string" }
+      },
+      "required": ["id", "nama", "nip", "jabatan", "role"]
+    },
+    "ContractorVendor": {
+      "title": "ContractorVendor",
+      "description": "Procurement contractor or consultant company",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "namaPerusahaan": { "type": "string" },
+        "bentukUsaha": { "type": "string" },
+        "namaDirektur": { "type": "string" },
+        "jabatan": { "type": "string" },
+        "alamatPerusahaan": { "type": "string" },
+        "npwp": { "type": "string" },
+        "bankNama": { "type": "string" },
+        "nomorRekening": { "type": "string" },
+        "atasNamaRekening": { "type": "string" }
+      },
+      "required": ["id", "namaPerusahaan", "namaDirektur"]
+    },
+    "KopDinasConfig": {
+      "title": "KopDinasConfig",
+      "description": "Dinas official letterhead header configuration",
+      "type": "object",
+      "properties": {
+        "pemerintahTingkat": { "type": "string" },
+        "namaDinas": { "type": "string" },
+        "alamat": { "type": "string" },
+        "teleponFax": { "type": "string" },
+        "email": { "type": "string" },
+        "website": { "type": "string" },
+        "kotaKedudukan": { "type": "string" },
+        "logoType": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "ProjectContract",
+      "description": "Collection of all education procurement projects and Berita Acara"
+    },
+    "/projects/{projectId}/audit_logs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Audit trail log entries for a specific project"
+    },
+    "/officers/{officerId}": {
+      "schema": "OfficialOfficer",
+      "description": "Collection of registered dinas officials (PPK and PPTK)"
+    },
+    "/contractors/{contractorId}": {
+      "schema": "ContractorVendor",
+      "description": "Collection of registered vendor and contractor records"
+    },
+    "/settings/{settingId}": {
+      "schema": "KopDinasConfig",
+      "description": "Letterhead and system settings"
+    }
+  }
+}

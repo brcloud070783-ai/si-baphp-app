@@ -1,0 +1,6 @@
+{
+  "name": "SI-BAPHP | Sistem Otomasi Berita Acara Proyek Pendidikan",
+  "description": "Aplikasi otomasi pembuatan Berita Acara Pemeriksaan Hasil Pekerjaan (BAPHP), BAST, dan dokumen pencairan pembayaran berbasis database kontrak terpadu dengan validasi otomatis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
