@@ -97,10 +97,27 @@ export const GoogleDocsPreview: React.FC<GoogleDocsPreviewProps> = ({
     if (!activeToken) {
       try {
         const res = await googleSignIn();
-        if (!res) return;
+        if (!res || !res.accessToken) {
+          setStatusMessage({
+            type: 'info',
+            text: 'Silakan klik tombol "Sambungkan Google Workspace" di kanan atas untuk menghubungkan akun Google Anda.'
+          });
+          return;
+        }
         activeToken = res.accessToken;
         setToken(activeToken);
-      } catch (err) {
+      } catch (err: any) {
+        console.warn('Google Sign In handle error:', err);
+        let text = 'Silakan hubungkan akun Google Anda dengan mengeklik tombol "Sambungkan Google Workspace" di kanan atas.';
+        if (err?.code === 'auth/unauthorized-domain') {
+          text = 'Domain ini belum diizinkan untuk OAuth Google. Gunakan Tab "Pratinjau & Cetak A4" di atas untuk langsung mencetak, mengunduh PDF, atau menyalin seluruh dokumen ke Microsoft Word secara instan!';
+        } else if (err?.code === 'auth/popup-closed-by-user' || err?.code === 'auth/cancelled-popup-request') {
+          text = 'Proses otentikasi Google dibatalkan. Klik "Sambungkan Google Workspace" di kanan atas untuk menghubungkan akun Google Anda.';
+        }
+        setStatusMessage({
+          type: 'info',
+          text
+        });
         return;
       }
     }
