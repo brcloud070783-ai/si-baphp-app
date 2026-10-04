@@ -336,72 +336,66 @@ export const DocumentRenderer: React.FC<DocumentRendererProps> = ({
         {selectedDoc === 'BAPHP' && (
           <>
             {/* --- HALAMAN 1 BAPHP --- */}
-            <div className="print-page w-[210mm] min-h-[297mm] bg-white text-black px-[12.7mm] py-[10mm] shadow-lg border border-slate-200 print:shadow-none print:border-none print:p-0 font-official text-[10.5pt] leading-[1.15] flex flex-col justify-between">
+            <div className="print-page w-[210mm] min-h-[297mm] bg-white text-black px-[15mm] py-[12mm] shadow-lg border border-slate-200 print:shadow-none print:border-none print:p-0 font-official text-[10.5pt] leading-[1.25] flex flex-col justify-between">
               <div>
                 <OfficialKop config={kopConfig} />
 
-                <div className="text-center my-3">
+                <div className="text-center my-4">
                   <h3 className="text-[13pt] font-bold underline uppercase tracking-wide">
                     Berita Acara Pemeriksaan Hasil Pekerjaan (BAPHP)
                   </h3>
-                  <p className="text-[11pt] font-semibold mt-1">
-                    Nomor : {project.nomorBAPHP}
-                  </p>
-                  <p className="text-[10.5pt] font-medium mt-0.5">
-                    Tanggal : {formatTanggalIndonesia(project.tanggalBAPHP)}
-                  </p>
                 </div>
 
-                <div className="border-t border-b border-black py-1.5 my-2">
+                <div className="border-t-2 border-b-2 border-black py-2 my-2">
                   <table className="w-full text-[10.5pt]">
                     <tbody>
                       <tr className="align-top">
-                        <td className="w-44 font-semibold uppercase">NOMOR</td>
+                        <td className="w-48 font-semibold uppercase">NOMOR</td>
                         <td className="w-4 text-center">:</td>
                         <td className="font-semibold">{project.nomorBAPHP}</td>
                       </tr>
                       <tr className="align-top">
                         <td className="font-semibold uppercase">TANGGAL</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>{formatTanggalIndonesia(project.tanggalBAPHP)}</td>
                       </tr>
                       <tr className="align-top">
                         <td className="font-semibold uppercase">PAKET PEKERJAAN</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td className="font-semibold">{project.namaPaket}</td>
                       </tr>
                       <tr className="align-top">
                         <td className="font-semibold uppercase">LOKASI</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>{project.lokasi}</td>
                       </tr>
                       <tr className="align-top">
                         <td className="font-semibold uppercase">SUMBER DANA</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>{project.sumberDana}</td>
                       </tr>
                       <tr className="align-top">
                         <td className="font-semibold uppercase">TAHUN ANGGARAN</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>{project.tahunAnggaran}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
-                <p className="text-justify indent-0 mt-3 font-medium">
-                  {tglBAPHPInfo.paragrafPembuka}
+                <p className="text-justify indent-0 mt-3 font-semibold">
+                  {tglBAPHPInfo.paragrafPembuka} :
                 </p>
 
-                <div className="my-2.5 pl-6 space-y-2">
+                <div className="my-2.5 pl-6 space-y-2 text-[10.5pt]">
                   <div>
                     <div className="flex">
-                      <span className="w-24 font-normal">Nama</span>
+                      <span className="w-28">Nama</span>
                       <span className="w-4 text-center">:</span>
                       <span className="font-bold">{project.ppk.nama}</span>
                     </div>
                     <div className="flex">
-                      <span className="w-24 font-normal">Jabatan</span>
+                      <span className="w-28">Jabatan</span>
                       <span className="w-4 text-center">:</span>
                       <span>{project.ppk.jabatan}</span>
                     </div>
@@ -409,12 +403,12 @@ export const DocumentRenderer: React.FC<DocumentRendererProps> = ({
 
                   <div>
                     <div className="flex">
-                      <span className="w-24 font-normal">Nama</span>
+                      <span className="w-28">Nama</span>
                       <span className="w-4 text-center">:</span>
                       <span className="font-bold">{project.pptk.nama}</span>
                     </div>
                     <div className="flex">
-                      <span className="w-24 font-normal">Jabatan</span>
+                      <span className="w-28">Jabatan</span>
                       <span className="w-4 text-center">:</span>
                       <span>{project.pptk.jabatan}</span>
                     </div>
@@ -422,12 +416,12 @@ export const DocumentRenderer: React.FC<DocumentRendererProps> = ({
 
                   <div>
                     <div className="flex">
-                      <span className="w-24 font-normal">Nama</span>
+                      <span className="w-28">Nama</span>
                       <span className="w-4 text-center">:</span>
                       <span className="font-bold">{project.penyedia.namaDirektur}</span>
                     </div>
                     <div className="flex">
-                      <span className="w-24 font-normal">Jabatan</span>
+                      <span className="w-28">Jabatan</span>
                       <span className="w-4 text-center">:</span>
                       <span className="uppercase font-semibold">
                         {project.penyedia.jabatan} ({project.penyedia.namaPerusahaan})
@@ -447,53 +441,53 @@ export const DocumentRenderer: React.FC<DocumentRendererProps> = ({
                       </tr>
                       <tr className="align-top">
                         <td className="uppercase">KEGIATAN</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>{project.kegiatan}</td>
                       </tr>
                       <tr className="align-top">
                         <td className="uppercase">NOMOR SPK</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>{project.nomorSPK}</td>
                       </tr>
                       <tr className="align-top">
                         <td className="uppercase">NILAI SPK</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>
                           <div className="font-medium">{formatRupiah(project.nilaiSPK)}</div>
-                          <div className="italic text-[9.5pt] leading-tight mt-0.5">
-                            {terbilangRupiah(project.nilaiSPK)}
+                          <div className="font-semibold text-[10pt] leading-tight my-0.5">
+                            ***{terbilangRupiah(project.nilaiSPK)}***
                           </div>
                         </td>
                       </tr>
                       <tr className="align-top">
                         <td className="uppercase">TANGGAL SPK</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>{formatTanggalIndonesia(project.tanggalSPK)}</td>
                       </tr>
                       <tr className="align-top">
                         <td className="uppercase">JANGKA WAKTU PELAKSANAAN</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>{formatJangkaWaktu(project.jangkaWaktuHari, project.tipeHari)}</td>
                       </tr>
                       <tr className="align-top">
                         <td className="uppercase">SUMBER DANA</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>{project.sumberDana}</td>
                       </tr>
                       <tr className="align-top">
                         <td className="uppercase">TAHUN ANGGARAN</td>
-                        <td className="text-center">:</td>
+                        <td className="w-4 text-center">:</td>
                         <td>{project.tahunAnggaran}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
-                <div className="mt-4 space-y-2 text-justify">
-                  <p className="indent-10">
+                <div className="mt-4 space-y-3 text-justify leading-relaxed">
+                  <p className="indent-12">
                     Dengan ini menyatakan telah mengadakan pemeriksaan Bersama-sama dengan konsultan pelaksana dan diketahui pejabat pelaksana teknis kegiatan (PPTK) yang bersangkutan, terhadap paket {project.namaPaket} {project.lokasi} dan Setelah mengadakan pemeriksaan secara teliti serta mempertimbangkan segala aspek secara seksama terhadap semua hasil pekerjaan telah di laksanakan dengan baik, apabila terdapat cacat tersembunyi dan kekurangan maka pihak konsultan wajib melakukan perbaikan dan melengkapinya.
                   </p>
-                  <p className="indent-10">
+                  <p className="indent-12">
                     Apabila tidak ada lagi ditemukan pekerjaan yang harus diperbaiki (confirmation of the remedy of the defect and defiences) maka dibuatkan berita acara pembayaran.
                   </p>
                 </div>
@@ -505,13 +499,13 @@ export const DocumentRenderer: React.FC<DocumentRendererProps> = ({
             </div>
 
             {/* --- HALAMAN 2 BAPHP (Persis Halaman 2 Gambar User) --- */}
-            <div className="print-page w-[210mm] min-h-[297mm] bg-white text-black px-[12.7mm] py-[10mm] shadow-lg border border-slate-200 print:shadow-none print:border-none print:p-0 font-official text-[10.5pt] leading-[1.15] flex flex-col justify-between">
+            <div className="print-page w-[210mm] min-h-[297mm] bg-white text-black px-[15mm] py-[12mm] shadow-lg border border-slate-200 print:shadow-none print:border-none print:p-0 font-official text-[10.5pt] leading-[1.25] flex flex-col justify-between">
               <div>
-                <p className="text-justify indent-10 mt-6 leading-relaxed">
+                <p className="text-justify indent-12 mt-8 leading-relaxed">
                   Demikian berita acara pemeriksaan hasil pekerjaan ini dibuat dengan sebenarnya dan penuh rasa tanggung jawab untuk dapat dipergunakan sebagaimana mestinya dengan ketentuan yang berlaku.
                 </p>
 
-                <div className="mt-14">
+                <div className="mt-12">
                   <div className="grid grid-cols-2 gap-8 text-center">
                     <div className="flex flex-col items-center">
                       <p className="font-normal">Pelaksana</p>
@@ -557,7 +551,7 @@ export const DocumentRenderer: React.FC<DocumentRendererProps> = ({
                     </div>
                   </div>
 
-                  <div className="mt-12 flex flex-col items-center text-center">
+                  <div className="mt-10 flex flex-col items-center text-center">
                     <p className="font-normal">Untuk dan atas nama</p>
                     <p className="font-bold uppercase tracking-tight">{kopConfig.namaDinas}</p>
                     <p className="font-normal">{project.ppk.jabatan}</p>
@@ -579,10 +573,10 @@ export const DocumentRenderer: React.FC<DocumentRendererProps> = ({
               </div>
 
               {/* QR Code Verifikasi Resmi BPK/Inspektorat */}
-              <div className="pt-6 border-t border-slate-300 flex items-center justify-between text-[8pt] text-slate-600">
+              <div className="pt-4 border-t border-slate-300 flex items-center justify-between text-[8pt] text-slate-600">
                 <div className="flex items-center gap-2">
-                  <div className="w-12 h-12 border border-black p-0.5 flex flex-col items-center justify-center bg-white">
-                    <QrCode className="w-10 h-10 text-black" />
+                  <div className="w-10 h-10 border border-black p-0.5 flex flex-col items-center justify-center bg-white">
+                    <QrCode className="w-8 h-8 text-black" />
                   </div>
                   <div>
                     <span className="font-bold text-black block">VERIFIKASI DIGITAL SI-BAPHP</span>
